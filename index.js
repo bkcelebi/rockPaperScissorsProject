@@ -21,53 +21,82 @@ const getComputerSelection = () => {
 };
 
 
-//playerSelection parameter case-insensitive
-const playerSelection = () => {
+//getPlayerSelection parameter case-insensitive
+const getPlayerSelection = () => {
     
     const userChoice = prompt("Rock? Paper? Scissors?");
     return userChoice.toLowerCase();
 };
 
 //Write a function that plays a single round of Rock Paper Scissors. 
-//The function should take two parameters - the playerSelection and 
+//The function should take two parameters - the getPlayerSelection and 
 //computerSelection - and then return a string that declares 
 //the winner of the round like so: "You Lose! Paper beats Rock"
 
-const playRound = (getComputerSelection, playerSelection) => {
+const playRound = (getComputerSelection, getPlayerSelection) => {
 
     //rock beats scissors
     //paper covers rock
     //scissors cuts paper
   
-    if (playerSelection === "rock"){
+    if (getPlayerSelection === "rock"){
+
         if (getComputerSelection === "scissors"){
-            return `Computer: ${getComputerSelection}\nPlayer: ${playerSelection}\nYou win!`;
-        }else if (playerSelection === getComputerSelection){
-            return `Computer: ${getComputerSelection}\nPlayer: ${playerSelection}\nNo one win`;
+            return ( 
+                "Computer: " + getComputerSelection +
+                "\nPlayer: " + getPlayerSelection + "\nYou win!"
+                );
+            
+        }else if (getPlayerSelection === getComputerSelection){
+            return ( 
+                "Computer: " + getComputerSelection +
+                "\nPlayer: " + getPlayerSelection + "\nNo one win"
+                );
         }else{
-            return `Computer: ${getComputerSelection}\nPlayer: ${playerSelection}\nYou lose!`;
+            return ( 
+                "Computer: " + getComputerSelection +
+                "\nPlayer: " + getPlayerSelection + "\nYou lose!"
+                );
         }
 
-    }else if(playerSelection === "paper"){
+    }else if(getPlayerSelection === "paper"){
         if (getComputerSelection === "rock"){
-            return `Computer: ${getComputerSelection}\nPlayer: ${playerSelection}\nYou win!`;
-        }else if (playerSelection === getComputerSelection){
-            return `Computer: ${getComputerSelection}\nPlayer: ${playerSelection}\nNo one win`;
+            return ( 
+                "Computer: " + getComputerSelection +
+                "\nPlayer: " + getPlayerSelection + "\nYou win!"
+                );
+        }else if (getPlayerSelection === getComputerSelection){
+            return ( 
+                "Computer: " + getComputerSelection +
+                "\nPlayer: " + getPlayerSelection + "\nNo one win"
+                );
         }else{
-            return `Computer: ${getComputerSelection}\nPlayer: ${playerSelection}\nYou lose!`;
+            return ( 
+                "Computer: " + getComputerSelection +
+                "\nPlayer: " + getPlayerSelection + "\nYou lose!"
+                );
         }
 
-    }else if(playerSelection === "scissors"){
+    }else if(getPlayerSelection === "scissors"){
         if (getComputerSelection === "paper"){
-            return `Computer: ${getComputerSelection}\nPlayer: ${playerSelection}\nYou win!`;
-        }else if (playerSelection === getComputerSelection){
-            return `Computer: ${getComputerSelection}\nPlayer: ${playerSelection}\nNo one win`;
+            return ( 
+                "Computer: " + getComputerSelection +
+                "\nPlayer: " + getPlayerSelection + "\nYou win!"
+                );
+        }else if (getPlayerSelection === getComputerSelection){
+            return ( 
+                "Computer: " + getComputerSelection +
+                "\nPlayer: " + getPlayerSelection + "\nNo one win"
+                );
         }else{
-            return `Computer: ${getComputerSelection}\nPlayer: ${playerSelection}\nYou lose!`;
+            return ( 
+                "Computer: " + getComputerSelection +
+                "\nPlayer: " + getPlayerSelection + "\nYou lose!"
+                );
         }
         
     }else{
-       return `${playerSelection} is not valid`;
+       return `${getPlayerSelection} is not valid`;
     }
 
 };
@@ -82,7 +111,7 @@ const game = () => {
     for (let i = 0; i < 5; i++){
 
         const compt = getComputerSelection();
-        const usr = playerSelection();  
+        const usr = getPlayerSelection();  
 
         console.log(playRound(compt, usr));
 

@@ -1,5 +1,15 @@
 "use strict"
 
+const userChoiceResult = document.querySelector('#userChoiceResult');
+const computerChoiceResult = document.querySelector('#computerChoiceResult');
+const winner = document.querySelector('#winner');
+const button = document.createElement('button');
+const playAgain = document.querySelector('#playAgain');
+const buttons = document.querySelectorAll('button');
+const userScoreDisplay = document.querySelector('#userScore');
+const computerScoreDisplay = document.querySelector('#computerScore');
+const announcementDisplay = document.querySelector('#announcement');
+
 //getComputerSelection function to return randomly either 
 //‘Rock’, ‘Paper’ or ‘Scissors’.
 
@@ -20,19 +30,6 @@ const getComputerSelection = () => {
     };
 };
 
-
-//getPlayerSelection parameter case-insensitive
-// const getPlayerSelection = () => {
-    
-//     const userChoice = prompt("Rock? Paper? Scissors?");
-//     return userChoice.toLowerCase();
-// };
-
-//Write a function that plays a single round of Rock Paper Scissors. 
-//The function should take two parameters - the getPlayerSelection and 
-//computerSelection - and then return a string that declares 
-//the winner of the round like so: "You Lose! Paper beats Rock"
-
 const playRound = (getComputerSelection, getPlayerSelection) => {
 
     //rock beats scissors
@@ -42,66 +39,56 @@ const playRound = (getComputerSelection, getPlayerSelection) => {
     if (getPlayerSelection === "rock"){
 
         if (getComputerSelection === "scissors"){
-            return ( 
-                "Computer: " + getComputerSelection +
-                "\nPlayer: " + getPlayerSelection + 
-                "\nYou win!"
-                );
-            
+            userChoiceResult.innerText = `You: ✊`;
+            computerChoiceResult.innerText = `Computer: ✌`;
+            winner.innerText = 'You win!';
+            winner.setAttribute("style", "font-style: italic; font-weight: bold;") 
         }else if (getPlayerSelection === getComputerSelection){
-            return ( 
-                "Computer: " + getComputerSelection +
-                "\nPlayer: " + getPlayerSelection + 
-                "\nDrawn"
-                );
+            userChoiceResult.innerText = `You: ✊`;
+            computerChoiceResult.innerText = `Computer: ✊`;
+            winner.innerText = 'Drawn!';
+            winner.setAttribute("style", "font-style: italic; font-weight: bold;")
         }else{
-            return ( 
-                "Computer: " + getComputerSelection +
-                "\nPlayer: " + getPlayerSelection + 
-                "\nYou lose!"
-                );
+            userChoiceResult.innerText = `You: ✊`;
+            computerChoiceResult.innerText = `Computer: ✋`;
+            winner.innerText = 'You lose!';
+            winner.setAttribute("style", "font-style: italic; font-weight: bold;")
         }
 
     }else if(getPlayerSelection === "paper"){
         if (getComputerSelection === "rock"){
-            return ( 
-                "Computer: " + getComputerSelection +
-                "\nPlayer: " + getPlayerSelection + 
-                "\nYou win!"
-                );
+            userChoiceResult.innerText = `You: ✋`;
+            computerChoiceResult.innerText = `Computer: ✊`;
+            winner.innerText = 'You win!';
+            winner.setAttribute("style", "font-style: italic; font-weight: bold;")
         }else if (getPlayerSelection === getComputerSelection){
-            return ( 
-                "Computer: " + getComputerSelection +
-                "\nPlayer: " + getPlayerSelection + 
-                "\nDrawn"
-                );
+            userChoiceResult.innerText = `You: ✋`;
+            computerChoiceResult.innerText = `Computer: ✋`;
+            winner.innerText = 'Drawn!';
+            winner.setAttribute("style", "font-style: italic; font-weight: bold;")
         }else{
-            return ( 
-                "Computer: " + getComputerSelection +
-                "\nPlayer: " + getPlayerSelection + 
-                "\nYou lose!"
-                );
+            userChoiceResult.innerText = `You: ✋`;
+            computerChoiceResult.innerText = `Computer: ✌`;
+            winner.innerText = 'You lose!';
+            winner.setAttribute("style", "font-style: italic; font-weight: bold;")
         }
 
     }else if(getPlayerSelection === "scissors"){
         if (getComputerSelection === "paper"){
-            return ( 
-                "Computer: " + getComputerSelection +
-                "\nPlayer: " + getPlayerSelection + 
-                "\nYou win!"
-                );
+            userChoiceResult.innerText = `You: ✌`;
+            computerChoiceResult.innerText = `Computer: ✋`;
+            winner.innerText = 'You win!';
+            winner.setAttribute("style", "font-style: italic; font-weight: bold;")
         }else if (getPlayerSelection === getComputerSelection){
-            return ( 
-                "Computer: " + getComputerSelection +
-                "\nPlayer: " + getPlayerSelection +
-                "\nDrawn"
-                );
+            userChoiceResult.innerText = `You: ✌`;
+            computerChoiceResult.innerText = `Computer: ✌`;
+            winner.innerText = 'Drawn!';
+            winner.setAttribute("style", "font-style: italic; font-weight: bold;")
         }else{
-            return ( 
-                "Computer: " + getComputerSelection +
-                "\nPlayer: " + getPlayerSelection + 
-                "\nYou lose!"
-                );
+            userChoiceResult.innerText = `You: ✌`;
+            computerChoiceResult.innerText = `Computer: ✊`;
+            winner.innerText = 'You lose!';
+            winner.setAttribute("style", "font-style: italic; font-weight: bold;")
         }
         
     }else{
@@ -110,69 +97,80 @@ const playRound = (getComputerSelection, getPlayerSelection) => {
 
 };
 
+const reset = () => {
 
-//Write a NEW function called game(). 
-//Call the playRound function inside of this one to play a 5 round game 
-//that keeps score and reports a winner or loser at the end.
+    button.innerText = 'Play Again';
+    playAgain.appendChild(button);
 
-// const game = () => {
-
-//     for (let i = 0; i < 5; i++){
-
-//         const compt = getComputerSelection();
-//         const usr = getPlayerSelection();  
-
-//         console.log(playRound(compt, usr));
-
-//     }
-// };
-
-// game()
-
-
-const buttons = document.querySelectorAll('button');
-const div = document.querySelector('div');
-
-const userScoreDisplay = document.querySelector('#userScore');
-const computerScoreDisplay = document.querySelector('#computerScore');
-const announcementDisplay = document.querySelector('#announcement');
-
-let userScore = 0;
-let computerScore = 0;
-
-buttons.forEach(button => {
     button.addEventListener('click', () => {
-        
-        const chosenButton = button.innerText.toLowerCase();
-        div.innerText = playRound(getComputerSelection(), chosenButton);
-
-
-        if (div.innerText.includes('win')){
-            userScoreDisplay.innerText = `You are ${++userScore}`
-        }
-        else if (div.innerText.includes('lose')) {
-            computerScoreDisplay.innerText = `Computer is ${++computerScore}`
-        };
-
-        if (userScore === 5) {
-            userScoreDisplay.innerText = "";
-            computerScoreDisplay.innerText = "";
-            announcementDisplay.innerText = "";
-            userScore = 0;
-            computerScore = 0;
-            announcementDisplay.innerText = "You won!";
-        }else if (computerScore === 5) {
-            announcementDisplay.innerText = "";
-            userScoreDisplay.innerText = "";
-            computerScoreDisplay.innerText = "";
-            userScore = 0;
-            computerScore = 0;
-            announcementDisplay.innerText = "Computer won!";
-        }
-
+        userScoreDisplay.innerText = "You:";
+        userScoreDisplay.setAttribute("style", "font-weight: bold;");
+        computerScoreDisplay.innerText = "Computer:";
+        computerScoreDisplay.setAttribute("style", "font-weight: bold;");
+        announcementDisplay.innerText = '';
+        userChoiceResult.innerText = 'You: ?';
+        computerChoiceResult.innerText = 'Computer: ?';
+        winner.innerText = '';
+        button.remove();
     })
-})
+};
 
+const game = () => {
 
+    let userScore = 0;
+    let computerScore = 0;
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            
+            let btnVal = '';
+            const chosenButton = button.innerText;
+            if (chosenButton === "✌") btnVal = "scissors";
+            else if (chosenButton === "✋") btnVal = "paper";
+            else btnVal = "rock";
+            playRound(getComputerSelection(), btnVal);
+
+            const userTicks = document.createElement('span');
+            userTicks.classList.add("material-icons");
+            userScoreDisplay.appendChild(userTicks);
+
+            const computerTicks = document.createElement('span');
+            computerTicks.classList.add("material-icons");
+            computerScoreDisplay.appendChild(computerTicks);
+
+            if (winner.innerText.includes('win')){
+                ++userScore;
+                for (let i = 0; i < userScore; i++){
+                    userTicks.innerText = "done";
+                    computerTicks.innerText = "close";
+                };
+            }
+            else if (winner.innerText.includes('lose')) {
+                ++computerScore;
+                for (let i = 0; i < computerScore; i++){
+                    computerTicks.innerText = "done";
+                    userTicks.innerText = "close";
+                };
+            }else {
+                computerTicks.innerText = "-";
+                userTicks.innerText = "-";
+            }
+
+            if (userScore === 5) {
+                userScore = 0;
+                computerScore = 0;
+                announcementDisplay.innerText = "You won!";
+                reset();
+            }else if (computerScore === 5) {
+                userScore = 0;
+                computerScore = 0;
+                announcementDisplay.innerText = "Computer won!";
+                reset();
+            }
+        })
+    })
+};
+
+game()
 
 

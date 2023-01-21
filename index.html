@@ -5,22 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project: Rock Paper Scissors</title>
+    <link rel="stylesheet" href="./index.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 <body>
     
-    <h1>Project: Rock Paper Scissors</h1>
-    <small>It is a console game at the moment please play it in the console</small>
-    <br><br>
+    <header>
+        <img src="./assets/images/rockPaperScissors.png" 
+        alt="Rock Paper Scissors"
+        width="300px">
+    </header>
+    
+    <!-- <small>It is a console game at the moment please play it in the console</small> -->
 
-    <div></div>
+    <main>
 
-    <button>Rock</button>
-    <button>Paper</button>
-    <button>Scissors</button>
+        <div id="display">
+            <div id="subDisplay">
+                <span id="userChoiceResult">You: ?</span>
+                <span id="vs">VS</span>
+                <span id="computerChoiceResult">Computer: ?</span>
+            </div>
+            <div id="winner"></div>
+        </div>
+        
 
-    <div id="userScore"></div>
-    <div id="computerScore"></div>
-    <div id="announcement"></div>
+        <div id="buttons">
+            <button class="emoji">✊</button>
+            <button class="emoji">✋</button>
+            <button class="emoji">✌</button>
+        </div>
+        
+        <div id="round">
+            <div id="userScore">
+                <span>You:</span>
+            </div>
+            <div id="computerScore">
+                <span>Computer:</span>
+            </div>
+            <div id="announcement"></div>
+        </div>
+
+        <div id="playAgain"></div>
+    </main>
+    
+        
+   
+    
 
     <script src="./index.js"></script>
 </body>

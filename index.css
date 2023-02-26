@@ -12,7 +12,6 @@ body{
     background-image: url("./assets/images/background.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: 20%;
     background-position: 50% 80%;
 }
 
@@ -83,7 +82,7 @@ button.emoji{
 #round{
     display: flex;
     height: 100px;
-    width: 500px;
+    width: auto;
     gap: 5px;
     justify-content: center;
     align-items: center;
@@ -102,7 +101,6 @@ footer{
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background-color: #6cd2ae;
     width: 250px;
     height: 5%;
     border-radius: 7px;
